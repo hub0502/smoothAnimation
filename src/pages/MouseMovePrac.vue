@@ -4,28 +4,42 @@
 </template>
 
 <script>
-export default {
-    
-}
-
-window.onload = function(){
-    let h1 = document.getElementsByTagName("h1")[0];
-    let cursor_item = document.getElementsByClassName("cursor_item")[0];
-    window.addEventListener("mousemove", mouseFunc, false);
-
-    function mouseFunc(e){
-        h1.innerHTML = "x: " + e.clientX + " y: " + e.clientY;
-        cursor_item.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
-        //curser.log(e.clientX, e.clientY);
+    export default {
+        
     }
-    loop();
-}
-let i = 0;
 
-function loop(){
-    console.log(i += 1);
-    window.requestAnimationFrame(loop);
-}
+    let x = 0;
+    let y = 0;
+    let mx = 0;
+    let my = 0;
+    let speed = 0.08;
+
+    let cursor_item;
+    let h1;
+
+    window.onload = function(){
+        h1 = document.getElementsByTagName("h1")[0];
+        cursor_item = document.getElementsByClassName("cursor_item")[0];
+        window.addEventListener("mousemove", mouseFunc, false);
+
+        function mouseFunc(e){
+            x = e.clientX;
+            y = e.clientY;
+            //cursor.log(e.clientX, e.clientY);
+        }
+        loop();
+    }
+
+    function loop(){
+        //console.log(x);
+        mx += (x - mx) * speed;
+        my += (y - my) * speed;
+        //console.log(x, mx)
+
+        h1.innerHTML = "x: " + mx + " y: " + my;
+        cursor_item.style.transform = "translate(" + mx + "px, " + my + "px)";
+        window.requestAnimationFrame(loop);
+    }
 
 </script>
 
