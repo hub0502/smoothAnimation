@@ -43,6 +43,7 @@
     //     cursor_item.style.transform = "translate(" + mx + "px, " + my + "px)";
     //     window.requestAnimationFrame(loop);
     // }
+            //cursor.log(e.clientX, e.clientY);
 
 </script>
 
