@@ -18,6 +18,13 @@ window.onload = function(){
         cursor_item.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
         //curser.log(e.clientX, e.clientY);
     }
+    loop();
+}
+let i = 0;
+
+function loop(){
+    console.log(i += 1);
+    window.requestAnimationFrame(loop);
 }
 
 </script>
